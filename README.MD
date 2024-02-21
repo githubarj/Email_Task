@@ -58,7 +58,7 @@ How to run:
 - Clone the repo and have it on your local machine
 
 ```
-
+git clone https://github.com/githubarj/Email_Task.git
 ```
 
 - Make sure your current directory is the one of the repo
