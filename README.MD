@@ -78,3 +78,5 @@ chomd u+x sendEmail.sh
 ```
 ./sendEmail
 ```
+Follow the prompts and click enter when done, will load a bit and send. 
+### Note: The email might go to spam depending on your organisation's email policy.

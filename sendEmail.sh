@@ -1,14 +1,19 @@
 #!/bin/bash
 
 sendemail() {
-    recipient="githuba9520@gmail.com"
 
-    echo "What is the subject of your email?"
-    read subject
-    echo "What is the body of your email?"
-    read body
-    echo "Enter the file path of the attachment (leave blank if none):"
-    read attachment
+    read -p "Email address of the recipient?" recipient
+
+    if [[ ! "$recipient" =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
+        echo "Error: Invalid email address format. Please enter a valid email address."
+        return 1
+    fi
+
+    read -p "What is the subject of your email?"  subject
+
+    read -p "What is the body of your email?"  body
+
+    read -p "Enter the file path of the attachment (leave blank if none):" attachment
 
     if [ -n "$attachment" ] && [ -f "$attachment" ]; then
         attachment_content=$(base64 "$attachment")           # Encode attachment in base64
@@ -25,7 +30,7 @@ sendemail
 
 if [ $? -eq 0 ]; then
 
-    echo "Success"
+    echo "Email sent successfully to $recipient."
 else
 
     echo "Failure"
